@@ -1,6 +1,6 @@
 # coding: utf-8
 # 
-# 程序功能 ：调用 DarkNet DLL，识别图像中的物体
+# 程序功能 ：调用 DarkNet DLL，识别图片中的物体
 
 import os
 import cv2

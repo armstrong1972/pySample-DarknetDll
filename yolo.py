@@ -12,23 +12,6 @@ altNames = None
 netW = 0
 netH = 0
 
-def cvShowDetections(detections, img):
-    h,w = img.shape[:2]
-    pw, ph = w/netW, h/netH
-    for detection in detections:
-        x, y, w, h = int(detection[2][0]*pw), int(detection[2][1]*ph), int(detection[2][2]*pw), int(detection[2][3]*ph)
-        #print(x,y,w,h)
-        w2 = w >> 1
-        h2 = h >> 1
-        cv2.rectangle(img, (x-w2,y-h2), (x+w2,y+h2), (0, 255, 0), 1)
-        #
-        cv2.putText(img,
-                    altNames[detection[0]] +
-                    " [" + str(round(detection[1] * 100, 1)) + "]",
-                    (x-w2, y-h2-5), cv2.FONT_HERSHEY_DUPLEX, 0.5,
-                    [0, 0, 255], 1)
-
-
 def Init_YOLO3( configPath = "./mod/yolov3.cfg" ,
                 weightPath = "./mod/yolov3.weights" ,
                 namesPath  = "./mod/coco.names" ):
@@ -78,4 +61,20 @@ def Detect_Image(img) :
     detections = darknet.detect_image(netMain, altNames, darknet_image, thresh=0.5)
     #print("ID_detections = " , id(detections))
     return detections
+
+def cvShowDetections(detections, img):
+    h,w = img.shape[:2]
+    pw, ph = w/netW, h/netH
+    for detection in detections:
+        x, y, w, h = int(detection[2][0]*pw), int(detection[2][1]*ph), int(detection[2][2]*pw), int(detection[2][3]*ph)
+        #print(x,y,w,h)
+        w2 = w >> 1
+        h2 = h >> 1
+        cv2.rectangle(img, (x-w2,y-h2), (x+w2,y+h2), (0, 255, 0), 1)
+        #
+        cv2.putText(img,
+                    altNames[detection[0]] +
+                    " [" + str(round(detection[1] * 100, 1)) + "]",
+                    (x-w2, y-h2-5), cv2.FONT_HERSHEY_DUPLEX, 0.5,
+                    [0, 0, 255], 1)
 
