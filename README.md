@@ -23,6 +23,6 @@ GPU : GTX1060 - 6G , CUDA 10.1 <br>
 
 <b>Result</b><br>
 1) CPU :  FPS<2.5 ; CPU>80% , affect other apps operations
-2) GPU :  FPS>4.5 ; CPU<25$ , don't affect other apps operations
+2) GPU :  FPS>4.5 ; CPU<25% , don't affect other apps operations
 
 <img src="gpu-v.jpg">
